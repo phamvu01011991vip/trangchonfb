@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Phân UID cho từng người — Chia đều</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#fff;--muted:#6b7280}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;margin:0;background:var(--bg);color:#111}
+    .container{max-width:1100px;margin:28px auto;padding:20px}
+    header{display:flex;gap:16px;align-items:center}
+    h1{margin:0;font-size:20px}
+    .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    textarea{width:80%; max-width: 100%;min-height:90px;padding:10px;border:1px solid #e5e7eb;border-radius:8px;font-family:monospace}
+    input[type=text]{padding:8px;border-radius:6px;border:1px solid #e5e7eb}
+    button{background:#111;color:#fff;padding:8px 12px;border-radius:8px;border:0;cursor:pointer}
+    .grid{display:grid;grid-template-columns:1fr 2fr;gap:18px;margin-top:18px}
+    .card{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 1px 4px rgba(15,23,42,0.06)}
+    .people-list{display:flex;flex-wrap:wrap;gap:8px}
+    .person{padding:8px 10px;border-radius:8px;background:#eef2ff;border:1px solid #e0e7ff;cursor:pointer}
+    .assignments{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+    .person-card{background:linear-gradient(180deg,#fff,#fafafa);padding:12px;border-radius:10px;border:1px solid #eef2ff}
+    .person-card h3{margin:0 0 8px 0;font-size:16px}
+    .uid-list{font-family:monospace;font-size:13px;white-space:pre-wrap}
+    .tools{display:flex;gap:8px;flex-wrap:wrap}
+    .small{padding:6px 8px;font-size:13px}
+    .muted{color:var(--muted)}
+    body {
+      background-image: url(./1.jpg);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1 style="color: red;background-color: #111;">Campuchia: Nơi để anh em kiếm tiền không phải nơi để anh em đi du lịch, nghỉ dưỡng</h1>
+        <div style="color: rgb(255, 0, 0); font-weight: bold; background-color: #111; margin-top: 20px;" class="muted">Không chọn được thì sẽ được tặng combo: cắt tóc + cạo râu + gõ phím + checkin đi du lịch</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <label class="muted">Danh sách UID:</label>
+        <textarea id="uids">
+100066813912504
+100067764049015
+100073649287017
+100075300368892
+100075302268282
+100075561561650
+100079980894867
+100080145406384
+100080356835569
+100080362225326
+100082072189075
+100082080257026
+100082125553161
+100082138905174
+100083735394559
+100083808565841
+100083818820633
+100083841655408
+100083844926631
+100083851163759
+100083862745763
+100083863405741
+100083867185989
+100083869345611
+100083886656462
+100083890972120
+100083898357352
+100083903393408
+100083908224125
+100083943622751
+100083946080277
+100083949469976
+100083951214715
+100083951783465
+100083956364824
+100083964233522
+100083977133027
+100083979204231
+100083980070555
+100083981021593
+100083983105967
+100083985862895
+100083986732043
+100083987722331
+100083992730109
+100083993717809
+100083996772736
+100084001638458
+100084004852072
+100084009348216
+100084012759306
+100084018498709
+100084027108609
+100084030108440
+100084036105794
+100084036408060
+100084039196929
+100084040490554
+100084048546808
+100084049910601
+100084050777760
+100084054314998
+100084054890242
+100084065179903
+100084073428617
+100084074296194
+100084075021986
+100084077504954
+100084081194848
+100084084225685
+100084109002727
+100084114065335
+100084115039197
+100084116237216
+100084121307749
+100084124127727
+100084126286802
+100084141314851
+100084141583516
+100084148810771
+100084154094096
+100084159974767
+100084176083231
+100084184757616
+100084191982198
+100084200895844
+100084210007679
+100084211032306
+100084211691381
+100084214419960
+100084222641730
+100084224681869
+100084225738963
+100084227769399
+100084229933461
+100084235001269
+100084249943390
+100084262900332
+100084264521790
+100084266588226
+100084272104483
+100084279069763
+100084286868352
+100084292836223
+100084293703319
+100084293913319
+100084299078718
+100084301898852
+100084304293886
+100084314077556
+100084315637738
+100084318572161
+100084319928957
+100084324667329
+100084327814292
+100084330393862
+100084351540477
+100084355683917
+100084357515898
+100084357904978
+100084358298196
+100084358805183
+100084360331623
+100084364621252
+100084366934696
+100084367472496
+100084369362423
+100084377221860
+100084383552404
+100084386791410
+100084393603546
+100084395285349
+100084426571820
+100084429662752
+100084443371594
+100084469740430
+100084473220586
+100084477146804
+100084646980559
+100084678856632
+100084909279458
+100084927967298
+100084963390342
+100085309816750
+100085534329886
+100085588502976
+100085707387162
+100085713293243
+100085747736601
+100085780615843
+100085833820026
+100085836624016
+100085842833618
+100085856616530
+100085875622088
+100085888041130
+100085896290670
+100085910930300
+100085911530457
+100085940539021
+100085963459539
+100085966968374
+100086004166235
+100086012225098
+100086038394976
+100086049884824
+100086057714292
+100086059453626
+100086076962979
+100086096622724
+100086100342765
+100086105771602
+100086130730809
+100086157123443
+100086167959634
+100086178279505
+100086181278709
+100086219707543
+100086260715067
+100086261465284
+100086287985713
+100086298693294
+100086316962590
+100086319782699
+100086346331327
+100086351580996
+100086364090174
+100086409152968
+100086568395176
+100086591628315
+100086846523232
+100086847327917
+100086899472106
+100086907146261
+100086907185597
+100087001503308
+100087140364108
+100087178316627
+100087182719751
+100087185756398
+100087213916090
+100087216805228
+100087220874936
+100087224087201
+100087224617601
+100087339338566
+100087378486711
+100087524691506
+100087983142195
+100088183031397
+100088254555999
+100088282943859
+100088348815355
+100088352926117
+100088380260250
+100088426093643
+100088474136096
+100088481635556
+100088488885786
+100088505382109
+        </textarea>
+
+        <div style="height:10px"></div>
+        <label class="muted">Danh sách người (phân tách bằng dấu phẩy):</label>
+        <input id="people" type="text" value="hoàng nam,nguyễn hương,việt anh,quang huy,tô lâm, phạm văn, đức dương, phan kiên, thiện trí, khẩn " />
+
+        <div class="controls">
+          <button id="distribute">Phân đều</button>
+          <button id="clear" class="small">Xóa phân bố</button>
+          <button id="copyAll" class="small">Sao chép toàn bộ JSON</button>
+          <button id="exportCsv" class="small">Xuất CSV</button>
+          <div style="flex:1"></div>
+        </div>
+
+        <div style="margin-top:12px" class="muted">Bác Hồ đã nói "Không có việc gì khó, chỉ sợ lòng không bền, đào núi và lấp biển, quyết chí ắt làm nên"</div>
+      </div>
+
+      <div class="card">
+        <h3>Kết quả phân bổ</h3>
+        <div id="summary" class="muted">Chưa phân bổ</div>
+        <div style="height:12px"></div>
+        <div id="assignments" class="assignments"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Utility
+    function parseUIDs(text){
+      // split on whitespace or commas
+      return text.split(/\s+|,+/).map(s=>s.trim()).filter(Boolean);
+    }
+    function parsePeople(text){
+      return text.split(/,+/).map(s=>s.trim()).filter(Boolean);
+    }
+
+    function distribute(uids, people){
+      // ensure stable distribution even if fewer people than uids or vice versa
+      const n = people.length;
+      const result = {};
+      people.forEach(p=> result[p]=[]);
+      if(n===0){ return result; }
+      // round-robin assignment
+      for(let i=0;i<uids.length;i++){
+        const p = people[i % n];
+        result[p].push(uids[i]);
+      }
+      return result;
+    }
+
+    function render(assignments){
+      const container = document.getElementById('assignments');
+      container.innerHTML = '';
+      const people = Object.keys(assignments);
+      let total=0; let min=Infinity,max=-Infinity;
+      people.forEach(p=>{
+        const list = assignments[p];
+        total += list.length;
+        min = Math.min(min, list.length);
+        max = Math.max(max, list.length);
+      });
+      if(people.length===0){ document.getElementById('summary').textContent = 'Không có người để phân bổ'; return; }
+      document.getElementById('summary').textContent = `Tổng UID: ${total} — Người: ${people.length} — mỗi người nhận: ${min} đến ${max}`;
+
+      people.forEach(p=>{
+        const card = document.createElement('div');
+        card.className = 'person-card';
+        const h = document.createElement('h3');
+        h.textContent = `${p} (${assignments[p].length})`;
+        card.appendChild(h);
+
+        const btns = document.createElement('div'); btns.className='tools';
+        const copyBtn = document.createElement('button'); copyBtn.className='small'; copyBtn.textContent='Sao chép';
+        copyBtn.onclick = ()=>{ navigator.clipboard.writeText(assignments[p].join('\n')).then(()=> alert('Đã sao chép')) }
+        const exportBtn = document.createElement('button'); exportBtn.className='small'; exportBtn.textContent='Xuất CSV';
+        exportBtn.onclick = ()=>{ downloadCSV([[ 'name','uid' ], ...assignments[p].map(u=>[p,u])], `${p.replace(/\s+/g,'_')}.csv`) }
+        btns.appendChild(copyBtn); btns.appendChild(exportBtn);
+        card.appendChild(btns);
+
+        const pre = document.createElement('div'); pre.className='uid-list'; pre.textContent = assignments[p].join('\n');
+        card.appendChild(pre);
+        container.appendChild(card);
+      });
+    }
+
+    function downloadCSV(rows, filename){
+      const lines = rows.map(r=> r.map(cell => '"' + String(cell).replaceAll('"','""') + '"').join(',')).join('\n');
+      const blob = new Blob([lines], {type:'text/csv;charset=utf-8;'});
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    }
+
+    // DOM hookups
+    document.getElementById('distribute').addEventListener('click', ()=>{
+      const uidsRaw = document.getElementById('uids').value;
+      const peopleRaw = document.getElementById('people').value;
+      const uids = parseUIDs(uidsRaw);
+      const people = parsePeople(peopleRaw);
+      const assignments = distribute(uids, people);
+      render(assignments);
+      // store latest to window for export/copy
+      window.latestAssignments = assignments;
+    });
+
+    document.getElementById('clear').addEventListener('click', ()=>{
+      document.getElementById('assignments').innerHTML = '';
+      document.getElementById('summary').textContent = 'Đã xóa phân bổ';
+      window.latestAssignments = null;
+    });
+
+    document.getElementById('copyAll').addEventListener('click', ()=>{
+      if(!window.latestAssignments){ alert('Chưa có phân bổ. Bấm Phân đều trước'); return; }
+      navigator.clipboard.writeText(JSON.stringify(window.latestAssignments, null, 2)).then(()=> alert('Đã sao chép JSON'))
+    });
+
+    document.getElementById('exportCsv').addEventListener('click', ()=>{
+      if(!window.latestAssignments){ alert('Chưa có phân bổ. Bấm Phân đều trước'); return; }
+      // combine into rows [name,uid]
+      const rows = [['name','uid']];
+      Object.entries(window.latestAssignments).forEach(([name,uids])=>{
+        uids.forEach(u=> rows.push([name,u]));
+      });
+      downloadCSV(rows, 'phan_bo_uid.csv');
+    });
+
+    // auto-distribute on load
+    document.getElementById('distribute').click();
+  </script>
+</body>
+</html>
